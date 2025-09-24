@@ -1,0 +1,150 @@
+\doxysection{Cherry\+::Base\+::Window Class Reference}
+\hypertarget{class_cherry_1_1_base_1_1_window}{}\label{class_cherry_1_1_base_1_1_window}\index{Cherry::Base::Window@{Cherry::Base::Window}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Window\+Types} \{ \newline
+{\bfseries NATIVE\+\_\+\+WINDOWS}
+, {\bfseries NATIVE\+\_\+\+LINUX}
+, {\bfseries NATIVE\+\_\+\+MAC}
+, {\bfseries NATIVE\+\_\+\+CROSS}
+, \newline
+{\bfseries SDL}
+, {\bfseries GLFW}
+ \}
+\item 
+enum {\bfseries Call\+Backs} \{ {\bfseries CHERRY\+\_\+\+WINDOW\+\_\+\+RESIZE}
+, {\bfseries CHERRY\+\_\+\+WINDOW\+\_\+\+EXIT}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_cherry_1_1_base_1_1_window_a0b4cb1dd5e04db0854d00d1509e8a2c9}{create\+\_\+window}} (Window\+::\+Window\+Types window\+Type, std\+::string window\+Name, int windowX, int windowY)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_window_8h_source_l00010}{10}} of file \mbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{class_cherry_1_1_base_1_1_window_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_cherry_1_1_base_1_1_window_a477e0323fe3670daa49eceff056db742}\index{Cherry::Base::Window@{Cherry::Base::Window}!CallBacks@{CallBacks}}
+\index{CallBacks@{CallBacks}!Cherry::Base::Window@{Cherry::Base::Window}}
+\doxysubsubsection{\texorpdfstring{CallBacks}{CallBacks}}
+{\footnotesize\ttfamily \label{class_cherry_1_1_base_1_1_window_a477e0323fe3670daa49eceff056db742} 
+enum Cherry\+::\+Base\+::\+Window\+::\+Call\+Backs}
+
+
+
+Definition at line \mbox{\hyperlink{_window_8h_source_l00021}{21}} of file \mbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CHERRY\_WINDOW\_RESIZE,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CHERRY\_WINDOW\_EXIT,}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+
+\end{DoxyCode}
+\Hypertarget{class_cherry_1_1_base_1_1_window_ad95b46dae2075664e2b5fa50ad67724e}\index{Cherry::Base::Window@{Cherry::Base::Window}!WindowTypes@{WindowTypes}}
+\index{WindowTypes@{WindowTypes}!Cherry::Base::Window@{Cherry::Base::Window}}
+\doxysubsubsection{\texorpdfstring{WindowTypes}{WindowTypes}}
+{\footnotesize\ttfamily \label{class_cherry_1_1_base_1_1_window_ad95b46dae2075664e2b5fa50ad67724e} 
+enum Cherry\+::\+Base\+::\+Window\+::\+Window\+Types}
+
+
+
+Definition at line \mbox{\hyperlink{_window_8h_source_l00012}{12}} of file \mbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Native\ Operating\ System\ Windowing\ API\ (Example\ such\ as\ Win32,}}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NATIVE\_WINDOWS,}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NATIVE\_LINUX,}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NATIVE\_MAC,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NATIVE\_CROSS,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLFW}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+
+\end{DoxyCode}
+
+
+\label{doc-constructors}
+\Hypertarget{class_cherry_1_1_base_1_1_window_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_cherry_1_1_base_1_1_window_a27f76d46a6b727f9a45eaa127d68aade}\index{Cherry::Base::Window@{Cherry::Base::Window}!Window@{Window}}
+\index{Window@{Window}!Cherry::Base::Window@{Cherry::Base::Window}}
+\doxysubsubsection{\texorpdfstring{Window()}{Window()}}
+{\footnotesize\ttfamily \label{class_cherry_1_1_base_1_1_window_a27f76d46a6b727f9a45eaa127d68aade} 
+Cherry\+::\+Base\+::\+Window\+::\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_window_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_cherry_1_1_base_1_1_window_a5954696c363fe3770653f6c4aef3646d}\index{Cherry::Base::Window@{Cherry::Base::Window}!````~Window@{\texorpdfstring{$\sim$}{\string~}Window}}
+\index{````~Window@{\texorpdfstring{$\sim$}{\string~}Window}!Cherry::Base::Window@{Cherry::Base::Window}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Window()}{\string~Window()}}
+{\footnotesize\ttfamily \label{class_cherry_1_1_base_1_1_window_a5954696c363fe3770653f6c4aef3646d} 
+Cherry\+::\+Base\+::\+Window\+::\texorpdfstring{$\sim$}{\string~}\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_window_8cpp_source_l00080}{80}} of file \mbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\label{doc-func-members}
+\Hypertarget{class_cherry_1_1_base_1_1_window_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_cherry_1_1_base_1_1_window_a0b4cb1dd5e04db0854d00d1509e8a2c9}\index{Cherry::Base::Window@{Cherry::Base::Window}!create\_window@{create\_window}}
+\index{create\_window@{create\_window}!Cherry::Base::Window@{Cherry::Base::Window}}
+\doxysubsubsection{\texorpdfstring{create\_window()}{create\_window()}}
+{\footnotesize\ttfamily \label{class_cherry_1_1_base_1_1_window_a0b4cb1dd5e04db0854d00d1509e8a2c9} 
+void Cherry\+::\+Base\+::\+Window\+::create\+\_\+window (\begin{DoxyParamCaption}\item[{Window\+::\+Window\+Types}]{window\+Type}{, }\item[{std\+::string}]{window\+Name}{, }\item[{int}]{windowX}{, }\item[{int}]{windowY}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_window_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (windowType\ ==\ Window::NATIVE\_WINDOWS)\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::wstring\ windowname\ =\ std::wstring(windowName.begin(),\ windowName.end());}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LPCWSTR\ newString\ =\ windowname.c\_str();}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Window::p\_createWindowWin32(newString,\ windowX,\ windowY);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (windowType\ ==\ Window::NATIVE\_CROSS)\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Cherry/\+Base/Window.\+h\item 
+src/\+Cherry/\+Base/Window.\+cpp\end{DoxyCompactItemize}

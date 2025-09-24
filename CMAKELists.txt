@@ -1,0 +1,23 @@
+# CMakeList.txt : CMake project for FiresideEngine, include source and define
+# project specific logic here.
+#
+cmake_minimum_required (VERSION 3.16)
+# Enable Hot Reload for MSVC compilers if supported.
+if (POLICY CMP0141)
+  cmake_policy(SET CMP0141 NEW)
+  set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
+endif()
+
+project ("Cherry")
+option(Cherry_Vulkan "CHERRYVulkan" ON)
+	file(GLOB_RECURSE sources src/*.cpp src/*.h src/*.hpp include/*.c include/*.cpp include/*.hpp)
+
+if(Cherry_Vulkan)
+	find_package(Vulkan REQUIRED FATAL_ERROR)
+endif()
+	add_executable (${CMAKE_PROJECT_NAME} ${sources})
+# Add source to this project's executable.
+	target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/" Vulkan::Include)
+	target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC Vulkan::Vulkan)
+set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY CXX_STANDARD 20)
+# TODO: Add tests and install targets if needed.
