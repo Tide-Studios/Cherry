@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "../Rendering/DX11/DX11Renderer.h"
 /*
 * \def Test
 * \ param NONE
@@ -24,6 +25,8 @@ class App {
 	 bool appRunning;
 	 App(std::string appName);
 	 ~App();
+	 Cherry::Rendering::DX11Renderer renderer;
+	 
  private:
 	 struct System {
 		 std::string p_operatingSystem;
