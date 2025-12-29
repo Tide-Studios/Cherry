@@ -18,3 +18,6 @@ Support for USD and MaterialX
 [Source File Link](docs/html/index.html)
 
 [Github Link]()
+
+# Installing
+We use vcpkg and CMake to handle the dependencies 
