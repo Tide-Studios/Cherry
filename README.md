@@ -1,5 +1,5 @@
 # 🍒 Cherry
-A cross-platform graphical application framework for rendering in Visual Effects and Games
+A cross-platform graphical application framework for Visual Effects and Games
 # Features
 Modern Support for Graphics APIs like Vulkan, DirectX12, Metal
 
