@@ -1,5 +1,5 @@
 # 🍒 Cherry
-A dual renderer providing support for Offline Rendering and Game Rendering
+A cross-platform application framework for rendering in Visual Effects and Games
 # Features
 Modern Support for Graphics APIs like Vulkan, DirectX12, Metal
 
