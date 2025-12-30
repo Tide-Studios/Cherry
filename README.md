@@ -2,12 +2,17 @@
 A cross-platform graphical application framework for Visual Effects and Games
 > [!CAUTION]
 > This project is under heavy development and should not be used in a commerical project at this time.
-# Features
-Modern Support for Graphics APIs like Vulkan, DirectX12, Metal
 
-Support for various windowing systems such as GLFW3, Native, SDL
+# Current Features
+Support for DirectX11
+Support for MaterialX
 
-Support for USD and MaterialX
+# Dependencies
+> [!NOTE]
+> Project Dependencies will likely become more minimal in the future months
+
+- [MaterialX](https://github.com/AcademySoftwareFoundation/MaterialX)
+- [ImGui](https://github.com/ocornut/imgui)
 # Example (Current)
 ```c++
 #include "Cherry/Base/App.h"
