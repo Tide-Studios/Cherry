@@ -1,9 +1,19 @@
 #include "DX11Renderer.h"
-#include <imgui/backends/imgui_impl_win32.h>
-#include "../Win"
+#include "imgui.h"
+#include "imgui_impl_dx11.h"
+#include "imgui_impl_win32.h"
 namespace Cherry {
 	namespace Rendering {
-		bool DX11Renderer::CreateDevice(HWND hwnd)
+
+		UINT Cherry::Rendering::DX11Renderer::g_ResizeWidth;
+		UINT Cherry::Rendering::DX11Renderer::g_ResizeHeight;
+		DX11Renderer::DX11Renderer()
+		{
+		}
+		DX11Renderer::~DX11Renderer()
+		{
+		}
+		bool DX11Renderer::g_createDevice(HWND hwnd)
 		{
 			DXGI_SWAP_CHAIN_DESC SwapChainDescription;
 			ZeroMemory(&SwapChainDescription, sizeof(SwapChainDescription));
@@ -30,32 +40,28 @@ namespace Cherry {
 			if (res != S_OK)
 				return false;
 
-			CreateRenderTarget();
+			g_createRenderTarget();
 			return true;
 		}
-
-		void  DX11Renderer::CleanupDeviceD3D()
+		void DX11Renderer::g_cleanupDeviceD3D()
 		{
 			if (g_SwapChain) { g_SwapChain.Reset(); }
 			if (g_D3D11DeviceContext) { g_D3D11DeviceContext.Reset(); }
-			if (g_D3D11Device) { g_D3D11Device.Reset();  }
-			CleanupRenderTarget();
-			
+			if (g_D3D11Device) { g_D3D11Device.Reset(); }
+			g_cleanupRenderTarget();
 		}
-
-		void DX11Renderer::CreateRenderTarget()
+		void DX11Renderer::g_createRenderTarget()
 		{
 			ComPtr<ID3D11Texture2D> pBackBuffer;
 			g_SwapChain->GetBuffer(0, IID_PPV_ARGS(&pBackBuffer));
 			g_D3D11Device->CreateRenderTargetView(pBackBuffer.Get(), nullptr, g_renderTargetView.GetAddressOf());
 			pBackBuffer.Reset();
 		}
-
-		void DX11Renderer::CleanupRenderTarget()
+		void DX11Renderer::g_cleanupRenderTarget()
 		{
 			if (g_renderTargetView) { g_renderTargetView.Reset(); }
 		}
-		void DX11Renderer::Resize()
+		void DX11Renderer::g_resize()
 		{
 			if (g_SwapChainOccluded && g_SwapChain->Present(0, DXGI_PRESENT_TEST) == DXGI_STATUS_OCCLUDED)
 			{
@@ -64,28 +70,50 @@ namespace Cherry {
 			g_SwapChainOccluded = false;
 			if (g_ResizeWidth != 0 && g_ResizeHeight != 0)
 			{
-				CleanupRenderTarget();
+				g_cleanupRenderTarget();
 				g_SwapChain->ResizeBuffers(0, g_ResizeWidth, g_ResizeHeight, DXGI_FORMAT_UNKNOWN, 0);
-				g_ResizeWidth =g_ResizeHeight = 0;
-				CreateRenderTarget();
+				g_ResizeWidth = g_ResizeHeight = 0;
+				g_createRenderTarget();
 			}
 		}
-		void DX11Renderer::createImGui() {
+		void DX11Renderer::g_initImGui(HWND hwnd)
+		{
+			
+			
 			IMGUI_CHECKVERSION();
 			ImGui::CreateContext();
+
+			ImGui::StyleColorsDark();
+			ImGuiIO& io = ImGui::GetIO(); (void)io;
+			ImGuiStyle& style = ImGui::GetStyle();
+			style.ScaleAllSizes(dpiScale);        // Bake a fixed style scale. (until we have a solution for dynamic style scaling, changing this requires resetting Style + calling this again)
 			
-			ImGui_ImplWin32_Init(Window::hwnd);
-			ImGui_ImplDX11_Init(renderer.g_D3D11Device.Get(), renderer.g_D3D11DeviceContext.Get());
+			ImGui_ImplWin32_Init(hwnd);
+			ImGui_ImplDX11_Init(g_D3D11Device.Get(), g_D3D11DeviceContext.Get());
+			// Frames
+			
+			
 		}
-		void DX11Renderer::render() {
+		void DX11Renderer::g_registerDPIScale()
+		{
+			ImGui_ImplWin32_EnableDpiAwareness();
+			dpiScale = ImGui_ImplWin32_GetDpiScaleForMonitor(::MonitorFromPoint(POINT{ 0, 0 }, MONITOR_DEFAULTTOPRIMARY));
+		}
+		void DX11Renderer::g_newFrame() {
+			ImGui_ImplDX11_NewFrame();
+			ImGui_ImplWin32_NewFrame();
+			ImGui::NewFrame();
+		}
+		void DX11Renderer::g_render()
+		{
 			ImGui::Render();
 			ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 			const float clear_color_with_alpha[4] = { clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w };
 			g_D3D11DeviceContext->OMSetRenderTargets(1, g_renderTargetView.GetAddressOf(), nullptr);
 			g_D3D11DeviceContext->ClearRenderTargetView(g_renderTargetView.Get(), clear_color_with_alpha);
 			ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
-			HRESULT hr = renderer.g_SwapChain->Present(1, 0);
-			renderer.g_SwapChainOccluded = (hr == DXGI_STATUS_OCCLUDED);
+			HRESULT hr = g_SwapChain->Present(1, 0);
+			g_SwapChainOccluded = (hr == DXGI_STATUS_OCCLUDED);
 		}
 	}
 }

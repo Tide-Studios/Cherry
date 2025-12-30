@@ -1,35 +1,27 @@
 #pragma once
-#include <iostream>
-#include "../Rendering/DX11/DX11Renderer.h"
-/*
-* \def Test
-* \ param NONE
-	Preprocessor definitons in one place for better useability
-*/
-#if defined(_WIN32) || defined(__WIN32__) || defined(__WIN32) || defined(__NT__)
-	#ifdef _WIN64
-		#define CHERRY_INTERNAL_APP_WIN32
-	#else
-		#error "32bit systems are not supported by Cherry"
-	#endif
-#endif
-#ifdef __LINUX__
-	#define CHERRY_INTERNAL_APP_LINUX
-#endif
-#ifdef __APPLE__
-	#define CHERRY_INTERNAL_APP_APPLE
-#endif
-class App {
- public:
-	 std::string g_appName;
-	 bool appRunning;
-	 App(std::string appName);
-	 ~App();
-	 Cherry::Rendering::DX11Renderer renderer;
-	 
- private:
-	 struct System {
-		 std::string p_operatingSystem;
-	 };
-	 System getSystem();
-};
+// Plog
+#include <plog/Log.h>
+#include <plog/Init.h>
+#include <plog/Formatters/TxtFormatter.h>
+#include <plog/Appenders/ColorConsoleAppender.h>
+// Standard Library
+#include <list>
+// Cherry Functions
+
+namespace Cherry {
+	namespace Base {
+		class App {
+
+		public:
+			App(std::string appName);
+			~App();
+			static App& RetriveApplication();
+			std::string g_appName;
+		//	std::list<Cherry::Base::Window> g_appWindows;
+			bool g_isAppRunning;
+
+		private:
+			plog::ColorConsoleAppender<plog::TxtFormatter> consoleAppender;
+		};
+	}
+}

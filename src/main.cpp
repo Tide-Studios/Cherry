@@ -1,26 +1,27 @@
 #include "Cherry/Base/App.h"
 #include "Cherry/Base/Window.h"
-#include "Cherry/Base/Events.h"
-#include "imgui/imgui.h"
-int main(){
-	App app = App("Hello");
-	Cherry::Base::Window window;
-	window.create_window(Cherry::Base::Window::NATIVE_WINDOWS,"Hello",10,10);
-	MSG msg{};
-	while (!window.isWindowClosed) {
-		
-		window.peek_messages();
-		if (window.isWindowClosed) {
+#include "Cherry/Rendering/DX11/DX11Renderer.h"
+#include "imgui.h"
+#include <imgui_impl_win32.h>
+int main() {
+	Cherry::Base::App app("Hello");
+	Cherry::Rendering::DX11Renderer renderer;
+	renderer.g_registerDPIScale();
+	Cherry::Base::Window window(Cherry::Base::Window::NATIVE_WINDOWS, "Hello", 10, 10);
+	Cherry::Base::Window windows(Cherry::Base::Window::NATIVE_WINDOWS, "Test", 10, 10);
+	renderer.g_createDevice(window.hwnd);
+	renderer.g_initImGui(window.hwnd);
+	while (app.g_isAppRunning) {
+		window.g_peekMessages();
+		if (!app.g_isAppRunning) {
 			break;
 		}
-		window.resize();
-		window.new_frame();
-		bool hello = true;
-		ImGui::ShowDemoWindow(&hello);
-		window.render();
-
+		renderer.g_newFrame();
+		bool open = true;
+		ImGui::ShowDemoWindow(&open);
+		renderer.g_resize();
+		renderer.g_render();
 		
 	}
-	app.window.cleanup();
-	
+	renderer.g_cleanupDeviceD3D();
 }

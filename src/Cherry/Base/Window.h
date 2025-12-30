@@ -1,10 +1,9 @@
 #pragma once
-#include "App.h"
+#include <d3d11.h>
+#include <dxgi1_4.h>
+#include <tchar.h>
+#include <string.h>
 #include <iostream>
-#include "gtest/gtest.h"
-#include "../Rendering/DX11/DX11Renderer.h"
-#ifdef CHERRY_INTERNAL_APP_WIN32
-#endif
 namespace Cherry {
 	namespace Base {
 		class Window {
@@ -18,31 +17,16 @@ namespace Cherry {
 				SDL,
 				GLFW
 			};
-			enum CallBacks {
-				CHERRY_WINDOW_RESIZE,
-				CHERRY_WINDOW_EXIT,
-
-			};
-			static HWND hwnd;
-			void create_window(Window::WindowTypes windowType, std::string windowName, int windowX, int windowY);
-			static void peek_messages();
-			Window();
 			~Window();
-			static bool isWindowClosed;
-
-			void resize();
-			void cleanup();
-			void render();
-			void new_frame();
-
-
-		private:
-			static void p_createWindowWin32(LPCWSTR windowName, int windowX, int windowY); // Internal Use Only
-			
-			
-
+			bool isWindowClosed;
+			int id;
+			HWND hwnd;
 	
+			
+			void g_peekMessages();
+			Window(Window::WindowTypes windowType, std::string windowName, int windowX, int windowY);
+			private:
+			void i_createWindowWin32(LPCWSTR windowName, int windowX, int windowY);
 		};
 	}
-	
 }
