@@ -2,6 +2,7 @@
 #include "imgui.h"
 #include "imgui_impl_dx11.h"
 #include "imgui_impl_win32.h"
+#include <string>
 namespace Cherry {
 	namespace Rendering {
 
@@ -29,7 +30,7 @@ namespace Cherry {
 			SwapChainDescription.SampleDesc.Count = 1;
 			SwapChainDescription.SampleDesc.Quality = 0;
 			SwapChainDescription.Windowed = TRUE;
-			SwapChainDescription.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
+			SwapChainDescription.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
 			UINT createDeviceFlags = 0;
 			createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
 			D3D_FEATURE_LEVEL featureLevel;
@@ -86,7 +87,7 @@ namespace Cherry {
 			ImGui::StyleColorsDark();
 			ImGuiIO& io = ImGui::GetIO(); (void)io;
 			ImGuiStyle& style = ImGui::GetStyle();
-			style.ScaleAllSizes(dpiScale);        // Bake a fixed style scale. (until we have a solution for dynamic style scaling, changing this requires resetting Style + calling this again)
+			style.ScaleAllSizes(dpiScale);
 			
 			ImGui_ImplWin32_Init(hwnd);
 			ImGui_ImplDX11_Init(g_D3D11Device.Get(), g_D3D11DeviceContext.Get());
@@ -114,6 +115,11 @@ namespace Cherry {
 			ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 			HRESULT hr = g_SwapChain->Present(1, 0);
 			g_SwapChainOccluded = (hr == DXGI_STATUS_OCCLUDED);
+		}
+		bool DX11Renderer::g_compileShader(std::wstring filename, std::string entryPoint, std::string profile)
+		{
+			D3DCompileFromFile(filename.data(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, entryPoint.data(), profile.data(), D3DCOMPILE_ENABLE_STRICTNESS, 0, nullptr, nullptr);
+			return false;
 		}
 	}
 }

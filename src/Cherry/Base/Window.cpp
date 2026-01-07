@@ -47,12 +47,12 @@ namespace Cherry {
 
 			);
 			if (hwnd == NULL) {
+
+			}else {
+				ShowWindow(hwnd, SW_SHOWDEFAULT);
+				UpdateWindow(hwnd);
 			}
 
-
-
-			ShowWindow(hwnd, SW_SHOWDEFAULT);
-			UpdateWindow(hwnd);
 
 
 

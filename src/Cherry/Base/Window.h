@@ -14,9 +14,8 @@ namespace Cherry {
 				NATIVE_LINUX,
 				NATIVE_MAC,
 				NATIVE_CROSS,
-				SDL,
-				GLFW
 			};
+			Window(Window::WindowTypes windowType, std::string windowName, int windowX, int windowY);
 			~Window();
 			bool isWindowClosed;
 			int id;
@@ -24,7 +23,6 @@ namespace Cherry {
 	
 			
 			void g_peekMessages();
-			Window(Window::WindowTypes windowType, std::string windowName, int windowX, int windowY);
 			private:
 			void i_createWindowWin32(LPCWSTR windowName, int windowX, int windowY);
 		};

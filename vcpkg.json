@@ -1,13 +1,18 @@
 {
-  "name": "cherry",
-  "version-string": "0.1.0",
+    "name": "cherry",
+    "version-string": "0.1.0",
     "dependencies": [
+        "gtest",
         {
             "name": "imgui",
-            "features": [ "dx11-binding", "win32-binding", "freetype" ]
+            "features": [
+                "dx11-binding",
+                "freetype",
+                "win32-binding"
+            ]
         },
         "materialx",
         "plog",
-        "gtest"
+        "shader-slang"
     ]
 }

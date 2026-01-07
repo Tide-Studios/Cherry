@@ -9,16 +9,17 @@ if (POLICY CMP0141)
 endif()
 
 project ("Cherry")
-	file(GLOB_RECURSE sources src/*.c src/*.cpp src/*.h src/*.hpp)
+	file(GLOB_RECURSE sources src/*.c src/*.cpp src/*.h src/*.hpp examples/*.cpp examples/*.cpp)
 	# Finds the required packages for Cherry
 	find_package(MaterialX REQUIRED)
 	find_package(imgui)
 	find_package(plog CONFIG REQUIRED)
+	find_package(slang)
 
 	add_executable (${CMAKE_PROJECT_NAME} ${sources})
 	target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC d3d12.lib d3d11.lib dxgi.lib dxguid.lib)
 	target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE MaterialXCore MaterialXFormat MaterialXGenShader imgui::imgui)
-	target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC plog::plog)
+	target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC plog::plog slang::slang slang::gfx)
+	target_compile_definitions(${CMAKE_PROJECT_NAME}  PUBLIC CHERRY_CMAKE)
 	set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY CXX_STANDARD 20)
-
 # TODO: Add tests and install targets if needed. 

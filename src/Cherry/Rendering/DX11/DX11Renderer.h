@@ -1,10 +1,12 @@
 #pragma once
-#include "Windows.h"
-#include "wrl/client.h"
-#include "d3d11.h"
-#include "dxgi.h"
+#include <Windows.h>
+#include <wrl/client.h>
+#include <d3d11.h>
+#include <dxgi.h>
 #include <dxgi1_5.h>
-
+#include <d3dcompiler.h>
+#include "string.h"
+#include <iostream>
 using namespace Microsoft::WRL;
 
 namespace Cherry {
@@ -30,6 +32,7 @@ namespace Cherry {
 			void g_registerDPIScale();
 			void g_newFrame();
 			void g_render();
+			bool g_compileShader(std::wstring filename, std::string entryPoint, std::string profile);
 		private:
 			float dpiScale;
 		};
