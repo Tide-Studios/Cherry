@@ -3,7 +3,7 @@ icon: lucide/rocket
 ---
 
 
-# Architecture
+# Cherry
 ``` mermaid
 flowchart TB
     A{"App"} --> B{"Rendering"} & C{"Base"}
