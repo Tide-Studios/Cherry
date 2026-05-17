@@ -4,8 +4,8 @@ A cross-platform graphical application framework for Visual Effects and Games
 > This project is under heavy development and should not be used in a commerical project at this time.
 
 # Current Features
-Support for DirectX11
-Support for MaterialX
+- Support for DirectX11
+- Support for MaterialX
 # Roadmap
 - [Trello](https://trello.com/b/xgIIaN6r/cherry)
 # Dependencies
