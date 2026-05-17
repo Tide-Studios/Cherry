@@ -44,6 +44,6 @@ int main() {
 }
 ```
 # Docs
-[Source File Link](docs/html/index.html)
+[Source File Link](docs/index.md)
 
-[Github Link]()
+[Github Link](https://tide-studios.github.io/Cherry/)
